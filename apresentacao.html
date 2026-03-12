@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filmes Favoritos — Kobana 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Open Sans', sans-serif;
+      padding: 48px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    header .logo {
+      display: block;
+      margin: 0 auto 28px;
+      height: 48px;
+      width: auto;
+    }
+
+    header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    header h1 span {
+      color: #d3fd53;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #111111;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #222222;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(227, 69, 251, 0.15);
+      border-color: #e645fb44;
+    }
+
+    .card-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #222222;
+    }
+
+    .card-header .person-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .card-header .label {
+      font-size: 0.68rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .movies {
+      display: flex;
+      gap: 0;
+    }
+
+    .movie {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .movie + .movie {
+      border-left: 1px solid #222222;
+    }
+
+    .movie img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .movie-info {
+      padding: 12px 14px;
+      flex: 1;
+    }
+
+    .movie-rank {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .movie:first-child .movie-rank { color: #d3fd53; }
+    .movie:last-child  .movie-rank { color: #e645fb; }
+
+    .movie-title {
+      font-size: 0.85rem;
+      color: #cccccc;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    .sort-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .sort-btn {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid #333;
+      background: transparent;
+      color: #888;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .sort-btn:hover {
+      border-color: #555;
+      color: #ccc;
+    }
+
+    .sort-btn.active {
+      background: #d3fd53;
+      border-color: #d3fd53;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="Itens/KOBANA_LOGO_HOR_NEGATIVO.png" alt="Kobana" />
+  <h1>Filmes <span>Favoritos</span></h1>
+  <p>Kobana 2026 · Torneio dos Melhores Filmes</p>
+</header>
+
+<div class="sort-bar">
+  <button class="sort-btn active" onclick="sortCards('original')">Ordem de envio</button>
+  <button class="sort-btn" onclick="sortCards('alpha')">Ordem alfabética</button>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Pedro Motta</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/forrest_gump.jpg" alt="Forrest Gump" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Forrest Gump</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/familia_mitchell.jpg" alt="A Família Mitchell e a Revolta das Máquinas" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">A Família Mitchell e a Revolta das Máquinas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Rodrigo Manhães</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/adeus_lenin.jpg" alt="Adeus, Lenin!" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Adeus, Lenin!</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/bacurau.jpg" alt="Bacurau" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Bacurau</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Kivanio</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/batman.jpg" alt="Batman" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Batman</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/11_homens_e_1_segredo.jpg" alt="11 Homens e 1 Segredo" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">11 Homens e 1 Segredo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Silvia</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/e_se_fosse_verdade.jpg" alt="E se fosse verdade" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">E se fosse verdade</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/as_ferias_da_minha_vida.jpg" alt="As Férias da Minha Vida" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">As Férias da Minha Vida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Gustavo Santiago</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/pecadores.jpg" alt="Pecadores" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Pecadores</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/uma_batalha_apos_a_outra.jpg" alt="Uma Batalha Após a Outra" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Uma Batalha Após a Outra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Alan Nascimento</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/o_conde_de_monte_cristo.jpg" alt="O Conde de Monte Cristo" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">O Conde de Monte Cristo</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/um_sonho_de_liberdade.jpg" alt="Um Sonho de Liberdade" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Um Sonho de Liberdade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Kleisson Vieira</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/gente_grande.jpg" alt="Gente Grande" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Gente Grande</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/se_beber_nao_case.jpg" alt="Se Beber Não Case" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Se Beber Não Case</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Cyntia Moure</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/ta_dando_onda.jpg" alt="Tá Dando Onda" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Tá Dando Onda (Surf's Up)</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/eternal_sunshine.jpg" alt="Brilho Eterno de uma Mente sem Lembranças" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Eternal Sunshine of the Spotless Mind</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Keila</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/harry_potter.jpg" alt="Harry Potter" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Qualquer um da Saga Harry Potter</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/o_auto_da_compadecida.jpg" alt="O Auto da Compadecida" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">O Auto da Compadecida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Amanda Grego</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/halloween.jpg" alt="Halloween" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Halloween</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/seven.jpg" alt="Seven - Os Sete Crimes Capitais" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Seven — Os Sete Crimes Capitais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Elson Otake</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/frankenstein.jpg" alt="Frankenstein" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Frankenstein</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/o_agente_secreto.jpg" alt="O Agente Secreto" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">O Agente Secreto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Marilia de Souza Rodrigues</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/o_predestinado.jpg" alt="O Predestinado" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">O Predestinado</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/o_labirinto_do_fauno.jpg" alt="O Labirinto do Fauno" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">O Labirinto do Fauno</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Gabriel Rocha</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/uma_batalha_apos_a_outra.jpg" alt="Uma Batalha Após a Outra" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Uma Batalha Após a Outra</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/o_agente_secreto.jpg" alt="O Agente Secreto" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">O Agente Secreto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Matheus Gonçalves</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters-extras/pulp_fiction.jpg" alt="Pulp Fiction" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Pulp Fiction</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/a_viagem_de_chihiro.jpg" alt="A Viagem de Chihiro" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">A Viagem de Chihiro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Gabriel Figueiredo</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/desventuras_em_serie.jpg" alt="Desventuras em Série" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Desventuras em Série</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters/tudo_em_todo_lugar.jpg" alt="Tudo em Todo Lugar ao Mesmo Tempo" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Tudo em Todo Lugar ao Mesmo Tempo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Rafael Lima</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/truque_de_mestre.jpg" alt="Truque de Mestre" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Truque de Mestre</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/a_noite_que_mudou_o_pop.jpg" alt="A Noite que Mudou o Pop" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">A Noite que Mudou o Pop</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Roberto</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/o_poderoso_chefao_2.jpg" alt="O Poderoso Chefão 2" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">O Poderoso Chefão 2</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/parasita.jpg" alt="Parasita" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Parasita</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Pamela Alves</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/como_eu_era_antes_de_voce.jpg" alt="Como Eu Era Antes de Você" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Como Eu Era Antes de Você</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/planeta_dos_macacos_confronto.jpg" alt="Planeta dos Macacos: O Confronto" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Planeta dos Macacos: O Confronto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Ana Passos</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/de_volta_para_o_futuro.jpg" alt="De Volta para o Futuro" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">De Volta para o Futuro</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/moulin_rouge.jpg" alt="Moulin Rouge!" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Moulin Rouge!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Anderson</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/star_wars.jpg" alt="Star Wars - Saga Clássica" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Star Wars — Saga Clássica</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/a_procura_da_felicidade.jpg" alt="À Procura da Felicidade" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">À Procura da Felicidade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="label">Escolhas de</div>
+      <div class="person-name">Natália Ozawa</div>
+    </div>
+    <div class="movies">
+      <div class="movie">
+        <img src="posters/interestelar.jpg" alt="Interestelar" />
+        <div class="movie-info">
+          <div class="movie-rank">1º favorito</div>
+          <div class="movie-title">Interestelar</div>
+        </div>
+      </div>
+      <div class="movie">
+        <img src="posters-extras/sem_limites.jpg" alt="Sem Limites" />
+        <div class="movie-info">
+          <div class="movie-rank">2º favorito</div>
+          <div class="movie-title">Sem Limites</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function sortCards(order) {
+    const grid = document.querySelector('.grid');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+
+    if (order === 'alpha') {
+      cards.sort((a, b) => {
+        const nameA = a.querySelector('.person-name').textContent.trim();
+        const nameB = b.querySelector('.person-name').textContent.trim();
+        return nameA.localeCompare(nameB, 'pt-BR');
+      });
+    } else {
+      cards.sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order));
+    }
+
+    cards.forEach(card => grid.appendChild(card));
+
+    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // Store original order
+  document.querySelectorAll('.card').forEach((card, i) => card.dataset.order = i);
+</script>
+</body>
+</html>
